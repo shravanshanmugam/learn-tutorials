@@ -70,3 +70,28 @@ Reducer process requests output of Mapper from mapper nodes. Output is transferr
 Once reducer is completed, output is store in local file system and then goes to HDFS.
 Task tracker sends heartbeat to job tracker.
 Job tracker will come to know once reducer task is completed.
+
+What happens When two blocks of data are present on same node?
+
+When task tracker gets request from Job tracker it starts two Mapper JVM and two Reducer JVM process.
+One task for each block. If there is only one block of data, the second process will be idle.
+Default value is 2.
+
+Data formats
+------------
+
+Data input/output for Mapper and Reducer is key-value pair.
+1. Text/text format
+Key - offset of the record (not line number. offset will wrap around to next line)
+Value - Record itself
+
+What happens When three blocks of data are present on same node?
+
+Third block task goes to queue and executes when one of the block task is completed.
+Or we can change the configuration of number of Mapper JVM processes.
+
+Handling failure
+----------------
+
+If any node goes down when executing a task, Job tracker will get replica information of the block and re-assign task to second node.
+
