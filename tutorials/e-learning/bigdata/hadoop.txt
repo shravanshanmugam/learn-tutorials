@@ -16,7 +16,7 @@ Components of Map Reduce Framework.
 3. Hive -> interact with Map Reduce via SQL. Created by Facebook
 4. Pig -> scripting language of Pig Latin. run Map Reduce using Pig Latin. Created by Yahoo
 5. Sqoop -> configurations and commands to move data from RDBMS <-> Hadoop i.e. import and export [Data pipeline]
-6. Uzi -> scheduler to run Hadoop jobs. Created by Yahoo
+6. Oozie -> scheduler to run Hadoop jobs. Created by Yahoo
 Above components are abstracts of Map Reduce
 7. HBase -> hbase shell commands. NoSQL data on Hadoop. Created by Facebook
 8. Mahout -> Data science component on Hadoop
@@ -30,5 +30,5 @@ Integration - Hadoop with any other Big Data framework or non Big Data framework
 Storing -> HDFS, HBase
 Processing -> Map Reduce, Hive, Pig
 Data pipeline -> Sqoop, Flume
-Uzi -> Scheduler
+Oozie -> Scheduler
 Mahout -> Data science
