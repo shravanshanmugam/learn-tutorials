@@ -1,0 +1,138 @@
+HDFS
+----
+
+File system
+Blocks
+Client and server
+Standalone and Distributed
+Types of Distributed system
+1. master-slave - has problem of SPOF (single point of failure)
+2. peer-to-peer (Exampe: Cassandra)
+Process
+Daemon process - Run in Background - 5 Java Processes. 3 for HDFS, 2 for Map Reduce
+Cluster and node
+1. Node - individual physical or virtual machine
+2. Cluster - group of nodes
+API - Application Program Interface
+
+Blocks
+------
+1. Windows - 16KB
+2. Linux - 512KB
+3. HDFS - 64MB until H1, 128MB over H2 (H0, H1, H2, H3 - versions of Hadoop)
+
+Replication
+-----------
+create copies for block
+Default replica count is 3
+One block will be stored in a node only once -> Replica of block will not be present on same node
+
+Example
+-------
+
+Linux machine - ext file system
+5 nodes in cluster
+Hadoop - HDFS file system
+1 master node and 4 slave nodes
+master - n0. process JP1 on master
+slaves - n1, n2, n3, n4. process JP2 on all slave nodes
+edge node - to connect to HDFS cluster instead of directly connecting to nodes in cluster
+users can communicate to HDFS cluster through edge node
+
+Client API - read, write request to HDFS cluster
+Metadata node - master (JP1)
+Data nodes - slave (JP2)
+
+Metadata
+--------
+File size
+Block size
+#Blocks for file
+Replica
+Placement allocation (in cluster with Rack awareness policy)
+
+Metadata stored in ext file system of master node
+
+Client API receives metadata from master node
+Creates a pipeline - create blocks of data and distribute in the cluster
+After all writes are complete, acknowledgement goes to client API and then master node
+
+Heartbeat communication
+-----------------------
+Master sends heartbeat every 3s to all slave nodes to check node is alive
+
+Failures
+--------
+Software [temporary]
+Hardware [permanent]
+
+Automatic Failover
+------------------
+Keep replica count of 3 on failure of node
+Create copy on node which doesn't have the block
+Metadata will be updated with nodes which have the new blocks
+
+
+In case of temporary failure, when node comes back up, the block on failed node will not be considered by master node (it doesn't have in it's metadata)
+Block becomes unused. This data needs to be cleaned up
+Or in case of temporary failure make it permanent by bringing down the node and add a new node to the cluster
+
+In case node already contains the block, replica will not be created
+In that case, Replica will be created when adding new node to the cluster
+
+In case of failure on write request, pipeline will inform master node, master node gives new metadata information and client will write to new nodes
+Read/write failure happens only when
+1. All nodes are down
+2. Client API process gets failed
+
+Hadoop processes
+----------------
+
+JP1 - Name node
+JP2 - Data node
+JP3 - Secondary name node (not related to HA)
+JP4 - Job tracker/Resource manager
+JP5 - Task tracker/Node manager
+
+Master node failure
+-------------------
+High Availability from H1
+Create periodic copies of metadata for permanent failure
+In H2, multiple name nodes - 1 active, N passive nodes
+Zookeeper - leader election [Leader-follower type of distributed system]
+Data nodes send heartbeats to all name nodes
+Only active node performs read/write/job requests
+Journal node - Synchronizes Metadata on name nodes between active and passive nodes
+
+Types of nodes
+--------------
+
+H1
+1. master node - name node + job tracker (we can split these 2 daemons)
+2. slave node - data node + task tracker (cannot split these 2 daemons)
+3. checkpoint node - secondary name node
+
+H2 without HA
+1. name node + resource manager
+2. data node + node manager
+3. checkpoint note - secondary name node
+
+Types of cluster
+----------------
+
+H1
+1. single node/pseudo node - no data distribution, no replication
+all 5 processes running on same node
+2. Distributed cluster
+5 nodes - 1 master node, 3 slave nodes, 1 secondary name node
+
+H2 with HA
+1. more than one name node - active name node, passive name node
+2. resource manager node
+3. 3 zookeeper nodes
+4. 3 Journal nodes
+5. 3 data node + node manager
+6. secondary name node - passive name node will take care of secondary name node job as well.
+if only one name node is present, then secondary name node will be created automatically
+
+Number of nodes in cluster = Replica + 1 [fault-tolerance of 1]
