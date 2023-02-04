@@ -143,3 +143,5 @@ Quotas
 1. Space quota - Volume of data we can write on node/directory
 2. Set quota - limit to number of files
 
+Name node web UI
+Resource manager
