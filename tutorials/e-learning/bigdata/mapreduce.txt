@@ -1,0 +1,51 @@
+Map Reduce
+----------
+
+Processing framework (batch/massive/parallel/distributed)
+
+Advantages
+----------
+
+Cluster monitoring
+Resource allocation
+Cluster management
+Scheduling
+Execution
+Speculative execution
+
+Aim - achieve data locality
+Identify location where block of data is stored and execute task on that location
+
+Abstraction of Map Reduce
+-------------------------
+
+Hive, Pig, Sqoop, Oozie
+
+Alternate of Map Reduce
+-----------------------
+
+Spark
+
+Daemons in Map Reduce
+---------------------
+
+Job tracker and Task tracker - H1
+Resource manager and Node manager - H2
+
+Map transformation - parallelize
+Reduce transformation - aggregate
+
+Mapper
+------
+
+Input - Blocks, HDFS, File system, RDBMS, NoSQL etc.
+
+Number of Mappers = Number of blocks = Size of data/Size of 1 block
+
+Reducer
+-------
+
+Input - output of Mapper
+Output - HDFS, File system, RDBMS, NoSQL etc.
+
+Number of reducers >= 1
