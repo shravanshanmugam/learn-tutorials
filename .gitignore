@@ -257,3 +257,6 @@ $RECYCLE.BIN/
 .idea/modules.xml
 .idea/Project_Default.xml
 .idea/inspectionProfiles/jarRepositories.xml
+.idea/jarRepositories.xml
+.idea/**
+
