@@ -49,3 +49,24 @@ Input - output of Mapper
 Output - HDFS, File system, RDBMS, NoSQL etc.
 
 Number of reducers >= 1
+
+Development
+-----------
+
+Mapper class and Reducer class - job on some file
+Create jar file
+Send request to daemon Job tracker.
+Job tracker requests location of block from Name node.
+Name node sends metadata of file as response.
+Job tracker sends mapper task request in parallel to task tracker of slave nodes [name node + task tracker] where block is present.
+Task tracker launch Map JVM process. It reads data from Data node and start mapper process.
+Output of mapper (a.k.a. intermediate data) is stored in local file system (ext file system in Linux) of that node.
+Task tracker sends heartbeat to job tracker (every 3 seconds).
+Job tracker will come to know once mapper task is completed.
+Once all mapper tasks are completed, job tracker will start the reducer task.
+Reducer task will execute in one of the mapper nodes or any other free node.
+Task tracker launch Reduce JVM process.
+Reducer process requests output of Mapper from mapper nodes. Output is transferred to Reducer node via HTTP.
+Once reducer is completed, output is store in local file system and then goes to HDFS.
+Task tracker sends heartbeat to job tracker.
+Job tracker will come to know once reducer task is completed.
