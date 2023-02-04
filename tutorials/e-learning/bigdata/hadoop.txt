@@ -1,0 +1,34 @@
+Hadoop
+------
+
+2002 - GFS - Distributed Google File System -> Storing
+2004 - GMR - Map Reduce -> Processing
+
+2005-2006 - Hadoop -> HDFS, Map Reduce
+
+Distributed data - For parallel processing
+
+Hadoop Ecosystem
+----------------
+1. HDFS
+2. Map Reduce
+Components of Map Reduce Framework.
+3. Hive -> interact with Map Reduce via SQL. Created by Facebook
+4. Pig -> scripting language of Pig Latin. run Map Reduce using Pig Latin. Created by Yahoo
+5. Sqoop -> configurations and commands to move data from RDBMS <-> Hadoop i.e. import and export [Data pipeline]
+6. Uzi -> scheduler to run Hadoop jobs. Created by Yahoo
+Above components are abstracts of Map Reduce
+7. HBase -> hbase shell commands. NoSQL data on Hadoop. Created by Facebook
+8. Mahout -> Data science component on Hadoop
+9. Flume -> Real time data processing. Messaging Queue component. DB -> Hadoop [Data pipeline]
+
+Features
+--------
+Loosely coupled framework - removing one component will not break the system
+Integration - Hadoop with any other Big Data framework or non Big Data framework
+
+Storing -> HDFS, HBase
+Processing -> Map Reduce, Hive, Pig
+Data pipeline -> Sqoop, Flume
+Uzi -> Scheduler
+Mahout -> Data science
