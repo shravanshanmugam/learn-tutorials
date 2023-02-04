@@ -136,3 +136,10 @@ H2 with HA
 if only one name node is present, then secondary name node will be created automatically
 
 Number of nodes in cluster = Replica + 1 [fault-tolerance of 1]
+
+Quotas
+------
+
+1. Space quota - Volume of data we can write on node/directory
+2. Set quota - limit to number of files
+
