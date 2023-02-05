@@ -68,6 +68,32 @@ Map Reduce job will be triggered for insert query to place record in correct par
 We can insert into a partition table by reading from non partition table.
 
 HDFS creates a folder for partition for each value.
-show partitions of table.
+We can view partitions of table.
 
 Commonly used partition - Year, sub partition by month, sub partition by day.
+
+Hive bucket
+-----------
+
+1. Data sampling
+2. Map side join
+
+Bucket is used to distribute the data.
+switch dynamic partition mode and bucketing
+
+Similar to partition, cannot load data to bucketing table. We can only insert with query or using existing non bucketing table.
+Create bucketing by Table schema clustered by column name into number of buckets.
+Hive decides which bucket to place a record using Hash partition (hash of bucket column mod number of buckets)
+HDFS creates n files one for each bucket.
+
+Why bucketing instead of partition?
+Partitioning is required when values repeat in columns so we can group by them.
+Bucketing can be used when we need to partition by columns with unique values i.e. partitioning is not possible but we also want to avoid full scan.
+Query by bucketing column will query directly on the correct partition which avoids full scan.
+
+
+Data sampling
+-------------
+
+1. Block
+2. Bucketed
