@@ -120,6 +120,7 @@ Design
 ------
 
 Input -> B0, B1 -> Map -> Shuffle [sort by key and group by key] -> Reduce
+Shuffle happens internally in Map Reduce
 
 Input ->
 K1  V1
@@ -153,3 +154,23 @@ Reduce ->
 amazon 8500
 ebay 7800
 flipkart 17000
+
+Map Reduce data type
+--------------------
+
+Java - int, float, String, boolean
+MR - IntWritable, FloatWritable, Text, BooleanWritable - serialized data types
+
+Skeleton code
+-------------
+
+Main class -> 2 inner classes - one for mapper, one for reducer and one main method for driver code
+
+Mapper class extends Mapper<InputKey, InputValue, OutputKey, OutputValue>
+Reducer class extends Reducer<InputKey, InputValue, OutputKey, OutputValue>
+
+methods
+1. setup - one time for block
+2. map/reduce - one time for each row
+3. run - driver related code
+4. cleanup
