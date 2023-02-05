@@ -21,3 +21,34 @@ If RDBMS is not installed for Hive, Hive will store metadata in Embedded RDBMS c
 Why not Embedded meta store?
 Embedded data store is local to hive server. In a cluster of hive nodes, the meta data will not be shared.
 For example create table request will execute on one node and read request will execute on another node which will not have the table itself.
+
+Hive SQL
+--------
+
+create database.
+create table.
+describe table.
+describe extended table.
+show functions. (pre-defined hive functions)
+select query with where clause.
+map reduce job gets triggered only when executing aggregate queries.
+
+Loading data
+------------
+
+1. row format delimited fields by ',' line terminated by '\n'. store as text file. load data into table from file path (local or hdfs).
+
+2. hive files are stored in /user/hive/warehouse by default.
+all databases and tables are created in this directory.
+we can directly put files into hdfs hive directory to create a table in database.
+
+3. insert query into table.
+
+Internal and External tables
+----------------------------
+
+Dropping internal table will delete hive tables and HDFS data.
+Dropping external table will delete hive tables but not delete HDFS data.
+
+ACID tables should be Internal tables.
+Creating external table will not delete HDFS data when hive table is dropped.
