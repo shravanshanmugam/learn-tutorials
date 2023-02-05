@@ -1,0 +1,23 @@
+Hive
+----
+
+Invented by Facebook.
+Hive is a Query Engine. Not a database.
+Uses SQL to communicate with Map Reduce instead of Java code.
+Abstraction of Map Reduce.
+
+Install hive.
+CLI and Hive server.
+
+Hive server stores metadata of table - columns, indexes etc.
+Hive metadata is stored in RDBMS. RDBMS is required for Hive.
+This is also known as remote meta store.
+Hive does not store the information itself. Data is stored in HDFS itself.
+Insert/load data is stored in HDFS.
+Read queries on table will look up metadata information and then retrieve data from HDFS and output result in table form.
+
+If RDBMS is not installed for Hive, Hive will store metadata in Embedded RDBMS called Derby.
+
+Why not Embedded meta store?
+Embedded data store is local to hive server. In a cluster of hive nodes, the meta data will not be shared.
+For example create table request will execute on one node and read request will execute on another node which will not have the table itself.
