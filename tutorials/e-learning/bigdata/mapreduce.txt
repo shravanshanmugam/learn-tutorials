@@ -174,3 +174,16 @@ methods
 2. map/reduce - one time for each row
 3. run - driver related code
 4. cleanup
+
+Input split
+-----------
+
+Block - physical
+Split - logical unit of block
+
+Problem - block can get split unevenly. meaning block of data doesn't end exactly at last column of a row.
+
+Split will logically connect the row that got separated by physical blocks
+
+1 Block = 1 Split = 1 Mapper
+1 Block <> 1 Split = 1 Mapper
