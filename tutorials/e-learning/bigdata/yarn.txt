@@ -3,3 +3,8 @@ YARN
 
 Cluster manager gives common execution model for all tech stack
 Replaces Map Reduce since H2
+
+Application manager (ASM) -> Resource manager + Scheduler
+On submitting job, ASM creates application master (AM) which is responsible for job to complete.
+Application master submits task to data node + node manager.
+If one of the application master fails, ASM creates another application master to restart the job.
