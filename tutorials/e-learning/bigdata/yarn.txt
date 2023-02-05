@@ -1,0 +1,5 @@
+YARN
+----
+
+Cluster manager gives common execution model for all tech stack
+Replaces Map Reduce since H2
