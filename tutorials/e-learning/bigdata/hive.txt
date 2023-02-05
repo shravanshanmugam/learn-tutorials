@@ -131,3 +131,31 @@ Define in table scheme store file format.
 ORCFile - Column oriented storage. Aggregation will be faster.
 Data can only be inserted using insert query or insert overwrite query selecting from another table. We cannot load data from file.
 
+ACID Table
+----------
+
+Supports Insert, update and delete records.
+
+Need to set few hive properties to enable ACID Table. We can set the properties in a hql file where we have our schema creation queries.
+
+1. Has to be internal table
+2. Has to be bucketed
+3. Must use ORCFile format
+4. Must enable table property transactional=true.
+
+Each insert, update, delete query will trigger Map Reduce job.
+
+User Defined Functions
+----------------------
+
+Create new Java project.
+Create a class extends UDF. Implement evaluate method.
+Can take multiple columns as input and return Text output.
+Build a jar of this project.
+Copy jar to hive server.
+Add jar to hive shell.
+Create temporary function as package.ClassName
+
+When exiting hive shell, function will be deleted. We need to add this function whenever we start hive shell. We can add along with our schema hql file.
+
+For example, custom hashing function, convert data to new data format.
