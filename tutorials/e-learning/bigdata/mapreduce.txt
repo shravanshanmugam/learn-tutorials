@@ -95,3 +95,61 @@ Handling failure
 
 If any node goes down when executing a task, Job tracker will get replica information of the block and re-assign task to second node.
 
+Map reduce example
+------------------
+
+Sales data
+
+id,platform,product,amount
+B0
+1,amazon,mobile,2000
+2,amazon,tv,1000
+3,flipkart,ac,3000
+B1
+4,flipkart,washingmachine,5000
+5,amazon,cycle,5500
+6,ebay,watch,7800
+7,flipkart,laptop,9000
+
+Query
+-----
+
+select platform, sum(amount) from sales group by platform;
+
+Design
+------
+
+Input -> B0, B1 -> Map -> Shuffle [sort by key and group by key] -> Reduce
+
+Input ->
+K1  V1
+0   1,amazon,mobile,2000
+31  2,amazon,tv,1000
+56  3,flipkart,ac,3000
+
+78  4,flipkart,washingmachine,5000
+95  5,amazon,cycle,5500
+121 6,ebay,watch,7800
+143 7,flipkart,laptop,9000
+
+Map ->
+K2 V2
+amazon 2000
+amazon 1000
+flipkart 3000
+
+flipkart 5000
+amazon 5500
+ebay 7800
+flipkart 9000
+
+Shuffle ->
+K3 V3
+amazon [2000, 1000, 5500]
+ebay [7800]
+flipkart [3000, 5000, 9000]
+
+Reduce ->
+amazon 8500
+ebay 7800
+flipkart 17000
