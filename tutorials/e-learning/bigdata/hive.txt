@@ -52,3 +52,22 @@ Dropping external table will delete hive tables but not delete HDFS data.
 
 ACID tables should be Internal tables.
 Creating external table will not delete HDFS data when hive table is dropped.
+
+Hive Partition
+--------------
+
+Static (default) partition
+1. partition column defined in schema
+2. insert query by partition column and value
+Dynamic partition
+1. switch dynamic partition mode
+2. insert query by partition column and without value
+
+Cannot load data into a partitioned table. We can only insert with query.
+Map Reduce job will be triggered for insert query to place record in correct partition.
+We can insert into a partition table by reading from non partition table.
+
+HDFS creates a folder for partition for each value.
+show partitions of table.
+
+Commonly used partition - Year, sub partition by month, sub partition by day.
