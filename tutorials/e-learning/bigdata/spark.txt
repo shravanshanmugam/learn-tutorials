@@ -1,0 +1,87 @@
+Spark
+-----
+
+Big Data solutions - Hadoop, Spark, Storm.
+
+Spark - Data processing framework
+
+
+Data processing
+-> Batch processing [processed from file]
+-> Stream processing [processing live data]
+
+Hadoop supports Batch processing
+Storm was built for stream processing
+Spark supports both Batch and Stream processing
+
+Pre-requisite
+-------------
+
+1. Hadoop components
+-> HDFS
+-> Map Reduce
+-> Hive
+2. Supported programming languages - Java, Scala, Python
+3. Linux
+4. SQL
+Daemon processes - Master, Worker
+5. Deployment modes
+-> Standalone (installing only Spark with single node or multi-node cluster)
+-> Yarn
+-> Mesos (cluster manager)
+6. In-memory processing/computation
+7. Spark REPL
+-> Spark shell (Scala)
+-> PySpark
+8. 3 APIs - distributed, fault-tolerant processing
+-> RDD
+-> Data frames
+-> Data set
+9. Transformation and Action
+Transformation -> Map, group, sort, filter
+Action -> Count, view, save
+10. Lazy evaluation
+Check for action first.
+Evaluate transformation from bottom to top.
+
+Framework
+---------
+
+Spark
+- Spark components
+    -> Spark SQL
+    -> Spark streaming (supports both batch and stream processing)
+    -> MLib
+    -> GraphX
+
+Data layers
+-----------
+
+-> Data storage
+-> Data processing
+-> Data scheduler
+-> Data visualization
+-> Data testing
+-> Data pipeline
+
+All components of Spark fall under Data processing.
+
+How to store data, schedule data, migrate data etc. ?
+We can integrate other technologies with Spark.
+
+Data storage
+-> DB - RDBMS, NoSQL
+-> File system
+    -> Standalone file system - NTFS, ext
+    -> Distributed file system - HDFS, AWS S3
+
+Spark can run on top of any Data storage.
+
+Spark-hadoop Framework
+----------------------
+
+Migration from Hadoop to Spark was problem for clients.
+Spark contributors could not sell their product.
+Spark enabled integration with components of Hadoop.
+
+Spark is replacement of Map Reduce.
