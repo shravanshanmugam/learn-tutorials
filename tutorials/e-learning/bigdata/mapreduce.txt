@@ -187,3 +187,11 @@ Split will logically connect the row that got separated by physical blocks
 
 1 Block = 1 Split = 1 Mapper
 1 Block <> 1 Split = 1 Mapper
+
+We can increase or decrease number of mapper tasks with help of split config.
+
+Speculative execution
+---------------------
+
+In case one of the task tracker gets stuck, Job tracker will assign mapper job to new task tracker on a new node which has same block of data.
+This creates duplicate job. Original task is not killed. Job tracker will take result of whichever task completes first.
