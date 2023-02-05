@@ -97,3 +97,37 @@ Data sampling
 
 1. Block
 2. Bucketed
+
+Bucket count
+------------
+
+1. Table size - based on dry run/historical data
+2. Block size
+
+Empirical formula for bucket count.
+Bucket count = 2^n >= Table size/Block size
+E.g.
+2300MB/128MB = 17.96
+2^n >= 17.96 = 32
+
+Based on this formula, we only need to change bucket count when table size (i.e. data) doubles.
+
+Changing bucket count requires repartitioning.
+Create new table with new bucket count.
+Insert overwrite data into new table selecting from old table.
+And lastly drop old table.
+Rename new table as old table.
+
+File format
+-----------
+
+Text file
+RCFile [14% smaller]
+Parquet [62% smaller]
+ORCFile [78% smaller]
+
+Processing time is reduced when using compressed file formats.
+Define in table scheme store file format.
+ORCFile - Column oriented storage. Aggregation will be faster.
+Data can only be inserted using insert query or insert overwrite query selecting from another table. We cannot load data from file.
+
