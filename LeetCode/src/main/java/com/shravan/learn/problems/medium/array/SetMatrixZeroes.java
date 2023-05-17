@@ -1,6 +1,7 @@
 package com.shravan.learn.problems.medium.array;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class SetMatrixZeroes {
 
@@ -20,6 +21,34 @@ public class SetMatrixZeroes {
         for (int[] row : matrix) {
             System.out.println("row = " + Arrays.toString(row));
         }
+    }
+
+    private static void printArray(int[][] matrix) {
+        System.out.println("[");
+        for (int[] row : matrix) {
+            System.out.println(" " + Arrays.toString(row));
+        }
+        System.out.println("]");
+    }
+
+    private static void printArray(int[][] matrix, String text1, String text2) {
+        System.out.println("  " + Arrays.toString(text2.toCharArray()));
+        for (int i = 0; i < matrix.length; i++) {
+            int[] row = matrix[i];
+            if (i == matrix.length-1) {
+                System.out.println("  " + Arrays.toString(row));
+            } else {
+                System.out.println(text1.charAt(i) + " " + Arrays.toString(row));
+            }
+        }
+    }
+
+    private static void print(List<List<Integer>> triangle) {
+        System.out.println("[");
+        for (List<Integer> integers : triangle) {
+            System.out.println(" " + integers);
+        }
+        System.out.println("]");
     }
 
     public void setZeroes(int[][] matrix) {
