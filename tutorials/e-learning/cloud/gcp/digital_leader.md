@@ -242,3 +242,39 @@ Functions (Cloud functions)
 |Servers|`C`|G|G|G|
 |Storage|`C`|G|G|G|
 |Networking|`C`|G|G|G|
+
+# Cloud Computing Deployment Models
+
+## Public Cloud
+Everything built on the Cloud Provider.
+Also known as: Cloud-Native.
+Used by
+- Startups
+- SaaS offerings
+- New projects and companies
+
+## Private Cloud
+Everything built on company's datacenters.
+Also known as: On-premise.
+The cloud could be OpenStack.
+Used by
+- Public Sector e.g. Government
+- Super sensitive data e.g. Hospitals
+- Large Enterprise with heavy regulation e.g. Insurance companies
+
+## Hybrid
+Using both On-Premise and a Cloud Service Provider.
+Connecting the two using a connection.
+Used by: 
+- Banks
+- FinTech
+- Investment Management
+- Large Professional Service providers
+- Legacy on-premise
+
+## Cross-Cloud
+Using multiple Cloud Providers.
+Also known as: Multi-cloud, "Hybrid cloud".
+Example: Azure Arc (connects Amazon EKS and GCP Kubernetes Engine)
+Anthos is GCP's offering for a control plane for compute across multiple CSPs
+and On-premise environments
