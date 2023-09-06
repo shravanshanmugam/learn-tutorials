@@ -90,3 +90,43 @@ and data storage space.
 Don't worry about IT staff, data centers and hardware
 Example: Microsoft Azure, AWS, Google Cloud
 
+# Google's Shared Responsibility Model
+The Shared Responsibility Model is a simple visualization that helps determine what the
+customer is responsible for and what Google is responsible for related to GCP
+
+| Responibility|IaaS| PaaS |SaaS|
+|--------------|----|------|----|
+| Content | `C` | `C`  | `C` |
+| Access Policies | `C` | `C`  | `C` |
+| Usage | `C` | `C`  | `C` |
+| Deployment | `C` | `C`  | G |
+| Web application security | `C` | `C`  | G |
+| Identity | `C` | G | G |
+| Operations | `C` | G | G |
+| Access and Authentication | `C` | G | G |
+| Network Security | `C` | G | G |
+| Guest OS, Data & Content | `C` | G | G |
+| Audit Logging | G | G | G |
+| Network | G | G | G |
+| Storage + encryption | G | G | G |
+| Hardened Kernel + IPC | G | G | G |
+| Boot | G | G | G |
+| Hardware | G | G | G |
+
+G - Google's Responsibility
+C - Customer's Responsibility
+
+The customer is responsible for the data and the configuration of access controls
+that resides in GCP.
+
+The customer is responsible for the configuration of cloud services and granting access
+to users via permissions.
+
+Google is generally responsible for the underlying Infrastructure.
+
+Responsibility of _in the_ cloud 
+If you can configure or store it then you (the customer)
+are responsible for it
+
+Responsibility _of the_ cloud 
+If you cannot configure it then Google is responsible for it
