@@ -204,4 +204,41 @@ Functions (Cloud functions)
 |OS|`C`|`C`|`C`|G|G|
 |Virtualization|`C`|G|G|G|G|
 
-Alternate Shared Responsibility Model view
+# Alternate Shared Responsibility Model view
+
+## GCP
+- Hardware/Global infrastructure
+  - Region
+  - Zones/ Fault Domains
+  - Physical Security
+- Software
+  - Compute
+  - Storage
+  - Database
+  - Networking (Routers/switches etc.)
+## Customer
+- Configuration of Managed services or Third-party Software
+  - Platforms
+  - Applications
+  - Identity and Access management (IAM)
+- Configuration of Virtual Infrastructure and Systems
+  - Operating System
+  - Network (VPC/Sub-nets etc.)
+  - Firewall
+- Security Configuration of Data
+  - Client-side data encryption
+  - Server-side encryption
+  - Networking traffic protection
+  - Customer data
+
+|Responsibility|On-Premise|IaaS|PaaS|SaaS|
+|--------------|----------|----|----|----|
+|Applications|`C`|`C`|`C`|G|
+|Data|`C`|`C`|`C`|G|
+|Runtime|`C`|`C`|G|G|
+|Middleware|`C`|`C`|G|G|
+|OS|`C`|`C`|G|G|
+|Virtualization|`C`|G|G|G|
+|Servers|`C`|G|G|G|
+|Storage|`C`|G|G|G|
+|Networking|`C`|G|G|G|
