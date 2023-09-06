@@ -130,3 +130,78 @@ are responsible for it
 
 Responsibility _of the_ cloud 
 If you cannot configure it then Google is responsible for it
+
+## Compute as a comparison example of the Shared Responsibility Model
+
+## IaaS
+Bare Metal (Compute Engine)
+- Customer
+    - The Host OS configuration
+    - Hypervisor
+- Google
+  - Physical machine
+
+Virtual Machine (Compute Engine)
+- Customer
+    - The Host OS configuration
+    - Container Runtime
+- Google
+  - Hypervisor, Physical machine
+Containers (Google Kubernetes Engine)
+- Customer
+  - Configuration of containers
+  - Deployment of containers
+  - Storage of containers
+- Google
+  - The OS
+  - Hypervisor
+  - Container runtime
+
+## PaaS
+Managed Platform (App Engine)
+- Customer
+  - Uploading your code
+  - Some configuration of environment
+  - Deployment strategies
+  - Configuration fo associated services
+- Google
+  - Servers
+  - OS
+  - Networking
+  - Storage
+  - Security
+
+## SaaS
+Word Processor (Google Docs)
+- Customer
+  - Contents of documents
+  - Management of files
+  - Configuration of sharing access controls
+- Google
+  - Servers
+  - OS
+  - Networking
+  - Storage
+  - Security
+
+## Function as a Service (FaaS)
+Functions (Cloud functions)
+- Customer
+  - Upload your code
+- Google
+  - Deployment
+  - Container Runtime
+  - Networking
+  - Storage
+  - Security
+  - Physical machine
+
+|Responsibility|Bare Metal|Dedicate Host|VM|Containers|Functions|
+|--------------|----------|-------------|--|----------|-------|
+|Code|`C`|`C`|`C`|`C`|`C`|
+|App Container|`C`|`C`|`C`|`C`|G|
+|Runtime|`C`|`C`|`C`|`C`|G|
+|OS|`C`|`C`|`C`|G|G|
+|Virtualization|`C`|G|G|G|G|
+
+Alternate Shared Responsibility Model view
