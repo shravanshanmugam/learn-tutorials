@@ -1,5 +1,7 @@
 package com.shravan.learn.problems.medium.dynamicprogramming;
 
+import java.util.Arrays;
+
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
         LongestIncreasingSubsequence solution = new LongestIncreasingSubsequence();
@@ -41,5 +43,32 @@ public class LongestIncreasingSubsequence {
             maxans = Math.max(maxans, dp[i]);
         }
         return maxans;
+    }
+
+
+    // More intuitive
+    public int lengthOfLIS2(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int[] dp = new int[nums.length];
+        // LIS of each index is 1 minimum
+        Arrays.fill(dp, 1);
+        int maxAns = 1;
+        // in reverse
+        for (int i = nums.length - 2; i >= 0; i--) {
+
+            for (int j = i + 1; j < nums.length; j++) {
+                // update only if nums[i] is smaller than the element to the right
+                if (nums[i] < nums[j]) {
+                    // recurrence relation
+                    dp[i] = Math.max(dp[i], 1 + dp[j]);
+                }
+            }
+            // overall max in dp[]
+            maxAns = Math.max(maxAns, dp[i]);
+        }
+//        System.out.println("dp = " + Arrays.toString(dp));
+        return maxAns;
     }
 }
